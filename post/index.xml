@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Post-rsses on Oleh.Ivashko blog</title>
+    <link>https://oleiva.github.io/post/index.xml</link>
+    <description>Recent content in Post-rsses on Oleh.Ivashko blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Powered by [Oleh Ivashko](https://oleiva.github.io)</copyright>
+    <lastBuildDate>Sun, 02 Apr 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://oleiva.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Awesome-console-services</title>
+      <link>https://oleiva.github.io/post/awesome-console-services</link>
+      <pubDate>Sun, 02 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://oleiva.github.io/post/awesome-console-services</guid>
+      <description>
+
+&lt;p&gt;A curated list of awesome console services (reachable via HTTP, HTTPS and other network protocols).&lt;/p&gt;
+
+&lt;h2 id=&#34;ip-address&#34;&gt;IP address&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl canihazip.com/s&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl ipinfo.io/ip&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl icanhazip.com&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl curlmyip.net&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl ipecho.net/plain&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl ifcfg.me&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl ip-addr.es&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dig +short myip.opendns.com @resolver1.opendns.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;ip-based-geolocation&#34;&gt;IP-based geolocation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl ipinfo.io/8.8.8.8&lt;/code&gt; or &lt;code&gt;curl ipinfo.io/8.8.8.8/loc&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl freegeoip.net/csv/8.8.8.8&lt;/code&gt; or &lt;code&gt;freegeoip.net/xml/4.2.2.2&lt;/code&gt; or &lt;code&gt;freegeoip.net/json/github.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;text-sharing-like-pastebin&#34;&gt;Text Sharing (like pastebin)&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ix.io&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sprunge.us&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ptpb.pw&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;url-shortener&#34;&gt;URL shortener&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl -s http://tinyurl.com/api-create.php?url=http://www.google.com&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;file-transfer&#34;&gt;File Transfer&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl --upload-file &amp;lt;file&amp;gt; transfer.sh/&amp;lt;filename&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;weather&#34;&gt;Weather&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl wttr.in&lt;/code&gt; or &lt;code&gt;curl wttr.in/Berlin&lt;/code&gt; - the right way to check the weather&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;finger oslo@graph.no&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;manuals-cheat-sheets-and-faqs&#34;&gt;Manuals, cheat sheets and FAQs&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl cheat.sh/tar&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;dictionaries-and-translators&#34;&gt;Dictionaries and translators&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;curl &#39;dict://dict.org/d:command line&#39;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;messages-texts-fortunes-names-generators&#34;&gt;Messages/texts/fortunes/names generators&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git commit -m $(curl -s https://whatthecommit.com/index.txt)&lt;/code&gt; — generate random commit message&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -H &#39;Accept: text/plain&#39; foaas.com/cool/:from&lt;/code&gt; — fuck off as a service&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;curl -s https://uinames.com/api/?region=france\&amp;amp;amount=25 | jq &#39;.[] | .name +&amp;quot; &amp;quot; + .surname&#39;&lt;/code&gt; — generate 25 random french names&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;chats-games-and-fun&#34;&gt;Chats, games and fun&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;nc towel.blinkenlights.nl 23&lt;/code&gt; — watch StarWars in terminal&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ssh chat.shazow.net&lt;/code&gt; — chat over SSH &lt;a href=&#34;https://github.com/shazow/ssh-chat&#34;&gt;shazow/ssh-chat&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/chubin/awesome-console-services&#34;&gt;Оригинал&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Чек-лист предложений о работе</title>
+      <link>https://oleiva.github.io/post/checklist-for-a-job-offer</link>
+      <pubDate>Sun, 02 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://oleiva.github.io/post/checklist-for-a-job-offer</guid>
+      <description>
+
+&lt;h4 id=&#34;1-рабочий-график-и-можно-ли-его-двигать&#34;&gt;1. Рабочий график и можно ли его двигать.&lt;/h4&gt;
+
+&lt;p&gt;Я люблю поспать. Но на моей прошлой работе «рабочее утро» начиналось в 7:30. Мало того, что я довольно часто не мог прийти к этому времени, я еще пол дня занимался тем, что пытался привести себя в рабочую форму. Где то до 10:00. С 10:30 до 11:30 я усердно работал. Потом был обед. А потом мне хотелось спать, а не работать, т.к. я не высыпался еще с утра. Надо ли говорить, что вместо 8 часов, на которые меня нанял работодатель, я работал в «потоке» только часа 3-4. Так что для себя нужно решить вопрос – когда я наиболее трудоспособен? И обговорить рабочий график с руководством. И еще один нюанс. Попробуйте закрепить обговоренный график в трудовом договоре или контракте (далее ТД), если работодатель идет на персональный рабочий график для Вас. Никаких устных договоренностей. Иначе Вам начнут крутить руки уже в процессе работы (как это было со мной).&lt;/p&gt;
+
+&lt;h4 id=&#34;2-работа-из-дома&#34;&gt;2. Работа из дома.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;возможна ли?&lt;/li&gt;
+&lt;li&gt;есть ли люди, которые так работают?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3-отпуск&#34;&gt;3. Отпуск.&lt;/h4&gt;
+
+&lt;p&gt;Если менять работу перед летом, то внезапно может встать вопрос с отпуском. Тем более, если кто-то из семейных уже «застолбил» отпуск на своей работе. Работодатели неохотно дают отпуск в первые полгода или вообще дают их только через год. Но если Вам очень нужно – можете поторговаться. Главное не забыть об этом вспомнить на собеседовании. Договоренность нужно запротоколировать в ТД.&lt;/p&gt;
+
+&lt;h4 id=&#34;4-командировки&#34;&gt;4. Командировки.&lt;/h4&gt;
+
+&lt;p&gt;Кто-то любит, кто-то нет. Но когда командировки по 2-3 месяца – это нужно сразу уточнять на собеседовании и принимать во внимание.&lt;/p&gt;
+
+&lt;h4 id=&#34;5-оплата-за-переработки&#34;&gt;5. Оплата за переработки.&lt;/h4&gt;
+
+&lt;p&gt;Если есть положение о компенсации за переработки – будьте любезны показать. Обычно этот пункт входит в коллективный договор, но редко компенсации выплачивают на деле. Но здесь уже соломку не подложишь, а узнаешь только когда прыгнешь в омут с головой.&lt;/p&gt;
+
+&lt;h4 id=&#34;6-можно-ли-приносить-личные-устройства&#34;&gt;6. Можно ли приносить личные устройства.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Вопрос, как о пропускном режиме, так и работе с ними (если вы разработчик мобильных приложений).&lt;/li&gt;
+&lt;li&gt;Дают ли девайсы в пользование или для работы. У нас на работе менеджерам выдавали рабочий iPad и ноутбук. Приятный бонус надо сказать.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;7-дмс-дополнительное-медицинское-страхование&#34;&gt;7. ДМС – дополнительное медицинское страхование.&lt;/h4&gt;
+
+&lt;p&gt;Что в него входит. Уточните насчет зубного. У некоторых компаний стоматология не входит в пакет ДМС. Люди потом расстраиваются, когда приходится платить свои кровные.&lt;/p&gt;
+
+&lt;h4 id=&#34;8-соглашение-о-неразглашении&#34;&gt;8. Соглашение о неразглашении.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;есть ли?&lt;/li&gt;
+&lt;li&gt;что в него входит?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;9-обучение-за-счет-компании&#34;&gt;9. Обучение за счет компании.&lt;/h4&gt;
+
+&lt;p&gt;Каждый год, или чаще, составляются списки курсов, на которые могут отправить сотрудников для повышения квалификации. Можно поинтересоваться какие курсы можно пройти в этом году. Платит ли компания за них? И сколько они обойдутся лично Вам? Например, есть практика требовать отработки в компании какое-то время или возврат затраченных компанией на Вас средств. Такой практикой можно тоже поинтересоваться. Но здесь Вам могут и наврать.&lt;/p&gt;
+
+&lt;h4 id=&#34;10-парковка-для-сотрудников&#34;&gt;10. Парковка для сотрудников?&lt;/h4&gt;
+
+&lt;h4 id=&#34;11-в-каких-копейках-платится-зп-отечественных-или-иностранных&#34;&gt;11. В каких копейках платится ЗП – отечественных или иностранных?&lt;/h4&gt;
+
+&lt;h4 id=&#34;12-есть-ли-должностная-инструкция&#34;&gt;12. Есть ли должностная инструкция.&lt;/h4&gt;
+
+&lt;p&gt;Работодатель очень любит накидывать непрофильные работы на обычных работников. Делегирование, так сказать. Но об этом Вам заранее никто не скажет. Могут отправить на заправку картриджей или починку принтера. «Тыжпрограммист»! Особенно это популярно в маленьких компаниях. Озадачиться должностной инструкцией стоит, т.к. это документ, по которому тебя не имеют право навешивать дополнительные обязанности, не прописанные в нем. Однако, в каждой инструкции есть пункт следующего содержания — «выполнять поручения руководства». Здесь все зависит от Вашей склочности.&lt;/p&gt;
+
+&lt;h4 id=&#34;13-офисное-пространство&#34;&gt;13. Офисное пространство.&lt;/h4&gt;
+
+&lt;p&gt;Open space или кабинеты. Есть ли мебель и оборудование, чтобы Вы могли выйти в понедельник и начать работать? Здесь не нужно слушать рекрутера! Здесь нужно попросить показать Ваше будущее рабочее место. Прекрасный офер может внезапно оказаться комнатушкой без окон в подвале, без мебели, без компьютера или гудящий, как осиное гнездо, open space. Если Вам не хотят показывать место – это повод насторожиться и настоять. По дороге туда и обратно можно поговорить с Вашими будущими коллегами и поинтересоваться насчет вопросов, на которые рекрутер Вам мог соврать. Например, на счет переработок и т.д.&lt;/p&gt;
+
+&lt;h4 id=&#34;14-фидбэк&#34;&gt;14. Фидбэк.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;по вакансии: собственно, сроки и ничего более.&lt;/li&gt;
+&lt;li&gt;резюме: можно также спросить насчет улучшения Вашего резюме. Что зацепило рекрутера, а где надо исправиться.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;15-зарплата&#34;&gt;15. Зарплата.&lt;/h4&gt;
+
+&lt;p&gt;Кроме торговли о ставке и премии не стоит забывать о:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;испытательный срок: на какой период? Какая зарплата на этот срок? Возможен ли пересмотр по результатам испытательного срока.&lt;/li&gt;
+&lt;li&gt;повышение квалификации: этот пункт про сертификацию, прохождение курсов. Я думаю, Вам хочется не просто повесить бумажку в рамке на стену, но и ощутить тяжесть в портмоне от прибавки. Этот вопрос тоже можно обговорить заранее. Если работодатель не заинтересован в Вашем профессиональном росте, то должны ли вы заинтересоваться им.&lt;/li&gt;
+&lt;li&gt;индексация и пересмотр зарплаты: обэтом обычно рекрутер сам неплохо рассказывает, но может и забыть.&lt;/li&gt;
+&lt;li&gt;банковская карточка: можно ли использовать свой банковский счет для перечисления зарплаты? На прошлой работе я так каждый месяц бегал — перекладывал! Все потому что банк, на карточки которых начислялись работодателем деньги, имел всего 20 банкоматов в городе-миллионнике.&lt;/li&gt;
+&lt;li&gt;премия: от каких факторов зависит и когда начисляется (квартально или ежемесячно).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;16-рабочее-окружение&#34;&gt;16. Рабочее окружение.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;сколько мониторов говорите? Дайте два.&lt;/li&gt;
+&lt;li&gt;вы используете NetBeans или Eclipse, а если я буду работать на IDEA?&lt;/li&gt;
+&lt;li&gt;на чем у Вас серверы крутятся? На Windows Server?.&lt;/li&gt;
+&lt;li&gt;здесь же можно спросить про электронный документооборот (в моей бывшей компании он был гадость редкая!).&lt;/li&gt;
+&lt;li&gt;где происходит общение и переписка?&lt;/li&gt;
+&lt;li&gt;можно ли использовать свой PC или свой софт.&lt;/li&gt;
+&lt;li&gt;можно ли приводить домашних животных на работу.&lt;/li&gt;
+&lt;li&gt;есть ли детский сад для детей – чтобы росли в корпоративной среде :-).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;17-структура-организации&#34;&gt;17. Структура организации.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;можно попросить диаграмму структурных подразделений организации и показать где здесь будет Ваше место. Таким образом, можно легко посчитать, сколько будет над Вами начальников (у меня их было 7 в свое время).&lt;/li&gt;
+&lt;li&gt;можно озадачиться вопросом: кто занимается архитектурой и аналитикой? Но эти вопросы не подходят для аутсорсинговых компаний, где все предельно просто и понятно – тим, тимлид, архитектор, тестеры, проджект менеджмент, руководство и обслуга (бухгалтерия и т.д.).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;18-вновь-открывшаяся-или-нет&#34;&gt;18. Вновь открывшаяся или нет.&lt;/h4&gt;
+
+&lt;p&gt;Здесь мы все ближе подбираемся к разговору о проектах и о Вашей непосредственной деятельности. Эта вакансия – расширение штата на существующий проект, набор на новый, затыкание дырки в штате (ведь «свято место пусто не бывает» – девиз полугосударственных контор и вращающихся вокруг них коршунов). Если вакансия открылась в связи с увольнением, можно поинтересоваться по какой причине уволился предыдущий сотрудник. Здесь все зависит от искренности рекрутера. И от расстройства Вы здесь себя не сможете застраховать.&lt;/p&gt;
+
+&lt;h4 id=&#34;19-решаемая-вакансией-проблема&#34;&gt;19. Решаемая вакансией проблема.&lt;/h4&gt;
+
+&lt;p&gt;Вакансии открывают не просто так, а для того чтобы ликвидировать какую-то потребность. Вот эту потребность Вам и нужно постараться выяснить. Какая конкретно проблема возникла у работодателя, что требуется только Ваша помощь. Например, не хватает людей. Нужны профессионалы с определенной квалификацией или знаниями. Необходимо увеличение производительности команды и т.д.
+Разговор непосредственно о Вашей будущей работе с Вашим будущим руководителем.&lt;/p&gt;
+
+&lt;h4 id=&#34;20-расскажите-о-проекте&#34;&gt;20. Расскажите о проекте.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;когда начался?&lt;/li&gt;
+&lt;li&gt;на какой стадии находится?&lt;/li&gt;
+&lt;li&gt;какие технологии применяются в проекте?&lt;/li&gt;
+&lt;li&gt;какие технологии планируются к добавлению в проект?&lt;/li&gt;
+&lt;li&gt;сколько человек задействовано на проекте?&lt;/li&gt;
+&lt;li&gt;заказчик/монетизация?&lt;/li&gt;
+&lt;li&gt;попросить небольшой спич о проекте (пускай изворачиваются как стартаперы :-) не всё же вам потеть на собеседовании).&lt;/li&gt;
+&lt;li&gt;а что будет, если завтра прекратится финансирование?&lt;/li&gt;
+&lt;li&gt;можно ли попроситься со временем на другой проект?&lt;/li&gt;
+&lt;li&gt;с каким кодом придется работать (legacy/новый) и насколько можно его менять?&lt;/li&gt;
+&lt;li&gt;нанимают на support или разработку.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;21-что-я-смогу-написать-через-2-4-года-в-резюме&#34;&gt;21. Что я смогу написать через 2-4 года в резюме.&lt;/h4&gt;
+
+&lt;p&gt;Это очень важный вопрос, благодаря которому о Вас может сложится хорошее впечатление, как о кандидате с потенциалом! Если ответ на него невнятный или что-то типа «Вы сможете написать следующее: Я работал в ООО «Рога и Копыта», получил огромный экспириенс при работе с рогами и копытами» тогда вопрос нужно уточнить:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;какие платформы и технологии используются?&lt;/li&gt;
+&lt;li&gt;используется ли Agile/Scrum/DevOps или другие методологии?&lt;/li&gt;
+&lt;li&gt;инструменты непрерывной интеграции, VCS, TDD, что используется Project Managment, что используется для Bug-tracking.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;22-что-в-резюме-писать-не-буду-но-это-упростит-усложнит-мне-жизнь&#34;&gt;22. Что в резюме писать не буду, но это упростит/усложнит мне жизнь.&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;когда и кто пишет тесты?&lt;/li&gt;
+&lt;li&gt;есть ли test-team?&lt;/li&gt;
+&lt;li&gt;как проводится тестирование: юнит-тесты и blackbox-тесты.&lt;/li&gt;
+&lt;li&gt;есть ли code review?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;23-дресскод&#34;&gt;23. Дресскод.&lt;/h4&gt;
+
+&lt;h4 id=&#34;24-версии&#34;&gt;24. Версии.&lt;/h4&gt;
+
+&lt;p&gt;Еще один важный вопрос, который нужно принимать во внимание. Например, кому через 2 года нужна будет 6 java, если выйдет уже 9 или даже 10 версия. Тоже самое касается фреймворков.&lt;/p&gt;
+
+&lt;p&gt;Когда все вопросы заданы, не забудьте попросить провести Вас на Ваше будущее рабочее место.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://habrahabr.ru/post/289050&#34;&gt;Оригинал&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Java Interview Questions.</title>
+      <link>https://oleiva.github.io/post/java-interview-questions</link>
+      <pubDate>Fri, 01 Jan 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://oleiva.github.io/post/java-interview-questions</guid>
+      <description>
+
+&lt;p&gt;I have written a lot of posts for java interview questions, this is a placeholder for all those posts. You can bookmark this post and come again in future to see the new additions.&lt;/p&gt;
+
+&lt;h3 id=&#34;1-core-java-interview-questions-and-answers&#34;&gt;1. Core Java Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Core Java is the starting point of any Java interview. Whether you are fresher or experienced in java, having a strong grip on Core Java is very important to clear the interview. This article lists down some of the commonly asked core java interview questions with answers.&lt;/p&gt;
+
+&lt;h3 id=&#34;2-java-8-interview-questions&#34;&gt;2.  Java 8 Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Java 8 was a major release with many new features such as Lambdas, Functional interfaces, Streams, Date Time API etc. This is a must have if you are going to any java interview because it’s always good to be aware of latest language changes.
+I recently wrote another article as part-2 of java 8 interview questions, please go through this too.&lt;/p&gt;
+
+&lt;h3 id=&#34;3-java-collections-interview-questions-and-answers&#34;&gt;3.  Java Collections Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Collections are core components of Java programming language and hence widely used in interview questions. The post contains 40 questions on java collections to make sure all the topics are covered and help you in impressing your interviewer.
+I also recommend to check out java collections tutorial to have a deep knowledge of Collections in java.&lt;/p&gt;
+
+&lt;h3 id=&#34;4-java-string-interview-questions-and-answers&#34;&gt;4.  Java String Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Everybody uses String and usually java interview starts with some tricky questions on Java String. This post contains 21 questions with detailed answers for String in java.&lt;/p&gt;
+
+&lt;h3 id=&#34;5-java-multi-threading-and-concurrency-interview-questions&#34;&gt;5.  Java Multi-Threading and Concurrency Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Multithreading and Concurrency is a hot topic in java interviews. Whether you are new to Java or an expert, its good to have good knowledge on Threads in java and this post covers 30+ interview questions for Java Threads.
+I also recommend you to read Java Thread Tutorial to gain good knowledge on Threads.&lt;/p&gt;
+
+&lt;h3 id=&#34;6-java-exception-handling-interview-questions&#34;&gt;6.  Java Exception Handling Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Exception Handling is one of the tricky area and Java provides a robust and object-oriented approach for exception handling. There are Exception, Error and Throwable at the root of Exception Handling. I have seen so many guys who are confused in checked, un-checked and runtime exceptions. Here you will go through a list of 15 questions entirely related to Exception Handling in Java.
+I would also advice to go through Java Exception Handling Tutorial before jumping into interview questions directly.&lt;/p&gt;
+
+&lt;h3 id=&#34;7-difference-between-jdk-jre-and-jvm&#34;&gt;7.  Difference between JDK, JRE and JVM&lt;/h3&gt;
+
+&lt;p&gt;You should know about java virtual machine, runtime envirimport and java compiler. A post dedicated to explain these and list out their differences.&lt;/p&gt;
+
+&lt;h3 id=&#34;8-java-classloaders-https-github-com-oleiva-java-interview-questions-blob-master-java-20classloader-md&#34;&gt;8.&lt;a href=&#34;https://github.com/Oleiva/Java-Interview-Questions/blob/master/Java%20ClassLoader.md&#34;&gt;Java Classloaders&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;If you consider yourself an expert in java, be prepared to face some questions on Java Classloader. A comprehensive post providing detailed explanation of different types of java classloaders, how and when we should write our own classloaders with example programs.&lt;/p&gt;
+
+&lt;h3 id=&#34;9-difference-between-abstract-class-and-interface&#34;&gt;9.  Difference between Abstract Class and Interface&lt;/h3&gt;
+
+&lt;p&gt;Abstract classes and interfaces are used in java for providing contract but what is the difference between them and when should we use interface over abstract class and vice versa is a great design question and asked a lot in java interviews. This post provides all the differences between abstract class and interface and when should we use interface over abstract class and vice versa. The post also explains how to use abstract class and interface both in conjunction to create a flexible design for providing contract for subclasses. I also recommend to read java abstract class and interface in javatutorials.&lt;/p&gt;
+
+&lt;h3 id=&#34;10-why-java-doesn-t-support-multiple-inheritance-and-composition-vs-inheritance&#34;&gt;10. Why Java Doesn’t support multiple inheritance and Composition vs Inheritance&lt;/h3&gt;
+
+&lt;p&gt;One of the mostly asked question is why java doesn’t support multiple inheritance and why should we prefer composition over inheritance. A post with detailed explanation of multiple inheritance and issues with inheritance that make composition a better approach.&lt;/p&gt;
+
+&lt;h3 id=&#34;11-java-programming-interview-questions&#34;&gt;11. Java Programming Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Some tricky questions to test your programming skills, also check out java tricky code snippets.&lt;/p&gt;
+
+&lt;h3 id=&#34;12-java-7-catch-block&#34;&gt;12. Java 7 Catch Block&lt;/h3&gt;
+
+&lt;p&gt;Java 7 catch block has been improved to catch multiple exceptions in a single block, a good improvement for making our catch block code small when we needed to catch a lot of exceptions.&lt;/p&gt;
+
+&lt;h3 id=&#34;13-java-heap-memory-vs-stack-memory-https-github-com-oleiva-java-interview-questions-blob-en-javaheapspacevsstack-md&#34;&gt;13. &lt;a href=&#34;https://github.com/Oleiva/Java-Interview-Questions/blob/EN/JavaHeapSpaceVsStack.md&#34;&gt;Java Heap Memory vs Stack Memory&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;JVM runtime memory is divided into heap memory and stack memory. An important article explaining the difference between Heap and Stack memory through program. I recently published a YouTube video too, make sure to watch that for better understanding.&lt;/p&gt;
+
+&lt;h3 id=&#34;14-java-is-pass-by-value-or-pass-by-reference&#34;&gt;14. Java is Pass By Value or Pass by Reference&lt;/h3&gt;
+
+&lt;p&gt;This is one of the most confusing question about java programming language. Some say it’s pass by value and somewhere you will read that it’s pass by reference. Then again behaviour changes for primitive types or Objects parameters? Read this out to clear this confusion once and for all. This is one of the favorite question asked by java interviewers.
+Java EE Interview Questions&lt;/p&gt;
+
+&lt;h3 id=&#34;15-jdbc-interview-questions-and-answers&#34;&gt;15. JDBC Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;If you are working on Enterprise applications, I am sure that JDBC API is a part of it. JDBC API provides database connectivity for relational databases, such as MySQL and Oracle.
+This article go through a collection of 40+ interview questions related to JDBC API from basic Connection to DataSource to Connection Pooling. It will help you in interviews for questions related to JDBC API and how to effectively use it.
+If you are new to JDBC or you have a lot of experience, I would still suggest you to go through JDBC Tutorial to make sure you have covered all the core parts of it.&lt;/p&gt;
+
+&lt;h3 id=&#34;16-servlet-interview-questions-with-answers&#34;&gt;16. Servlet Interview Questions with Answers&lt;/h3&gt;
+
+&lt;p&gt;Servlets are one of the hot topics of Java Enterprise Edition interview questions. This post contains a list of 50 servlet interview questions with answers in detail. A must have bookmarked post because I will keep on adding more questions in future.&lt;/p&gt;
+
+&lt;h3 id=&#34;17-jsp-interview-questions-and-answers&#34;&gt;17. JSP Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;JSP is the integral part of Java EE and if you are giving interview for web developer, then having good knowledge of JSP technology is very important. This post contains a list of 35 JSP interview questions with answers. Please make sure to bookmark it because I will be keep on adding more to the list in future.&lt;/p&gt;
+
+&lt;h3 id=&#34;18-struts-interview-questions-and-answers&#34;&gt;18. Struts Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Struts2 is one of the modern Java Web Application framework. This article contains a list of 30 questions that covers most of the important components of Struts2 framework.&lt;/p&gt;
+
+&lt;h3 id=&#34;19-spring-interview-questions-and-answers&#34;&gt;19. Spring Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Spring Framework is most widely used Java EE framework. It’s built on core principles of “Dependency Injection” and “Aspect Oriented Programming”. This post contains more than 45 questions related to Spring Framework, Dependency Injection, Spring AOP, Spring JDBC, Spring MVC Framework and some common tasks such as file uploading, localization etc. A good post to go through before any Java EE interview.&lt;/p&gt;
+
+&lt;h3 id=&#34;20-web-services-interview-questions&#34;&gt;20. Web Services Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Web services are very popular these days because they are language and platform independent. It’s easy to create SOAP and REST based web services. This post will help you learn about web services and related interview questions. Then there are questions with detailed answers for Java Web Services.&lt;/p&gt;
+
+&lt;h3 id=&#34;21-jsf-interview-questions&#34;&gt;21. JSF Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;More than 50 questions on JSF-2 with detailed answers, go through them as a refresher on JSF framework.&lt;/p&gt;
+
+&lt;h3 id=&#34;22-hibernate-interview-questions-and-answers&#34;&gt;22. Hibernate Interview Questions and Answers&lt;/h3&gt;
+
+&lt;p&gt;Hibernate is the best java based ORM tool in the market. It’s used a lot in most of the enterprise applications to overcome the shortcomings of JDBC. One of the best part with hibernate is the flexibility of configuration using XML, JPA annotations as well as through code. So it’s always a plus point to have Hibernate in your resume. Whether you are experienced with hibernate or newbie, these questions will help you in interview and impress your interviewer.&lt;/p&gt;
+
+&lt;h3 id=&#34;23-scala-interview-questions&#34;&gt;23. Scala Interview Questions&lt;/h3&gt;
+
+&lt;p&gt;Scala is famous programming language that provides functional programming in Java. I have written three successive posts too that you can go though for scala interview preparation.
+•   Scala intermediate interview questions
+•   Scala intermediate and advanced interview questions
+•   Scala advanced interview questions&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Common Job Interview Questions
+For clearing an interview, only technical knowledge is not enough. You will have to go through common job interview questions such as your last company experience, why you are looking for change etc. This is a post with 40 job interview questions that are asked in almost all the interviews.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

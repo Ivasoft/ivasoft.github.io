@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="https://rawgit.com/Oleiva/notes/master/bootstrap.min.css" rel="stylesheet">
+	<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<!-- <script src="docs/js/ie10-viewport-bug-workaround.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
+<script src="https://rawgit.com/Oleiva/notes/master/footable.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+	<table class="table table-striped">
+	</table>
+</div> 
+
+<script>
+	jQuery(function($){
+		$('.table').footable({
+			"paging": {
+				"enabled": true
+			},
+			"filtering": {
+				"enabled": true
+			},
+			"sorting": {
+				"enabled": true
+			},
+			"columns":  
+			[{"name":"id","title":"ID","breakpoints":"xs sm","type":"number","style":{"width":80,"maxWidth":80}},
+			  {"name":"firstName","title":"First Name"},
+			  {"name":"lastName","title":"Last Name"},
+			  {"name":"something","title":"Never seen but always around","visible":false,"filterable":false},
+			  {"name":"jobTitle","title":"Job Title","breakpoints":"xs sm","style":{"maxWidth":200,"overflow":"hidden","textOverflow":"ellipsis","wordBreak":"keep-all","whiteSpace":"nowrap"}},
+			  {"name":"started","title":"Started On","type":"date","breakpoints":"xs sm md","formatString":"MMM YYYY"},
+			  {"name":"dob","title":"Date of Birth","type":"date","breakpoints":"xs sm md","formatString":"DD MMM YYYY"},
+			  {"name":"status","title":"Status"}
+  			],
+		
+			"rows": $.get("https://rawgit.com/Oleiva/notes/master/rows.json")
+
+		});
+	});
+</script>
+
+</body>
+</html>

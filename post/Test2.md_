@@ -1,0 +1,95 @@
++++
+title = "Java Streams groupingBy Examples."
+description = "Java Streams grouping By Examples"
+date = "2016-01-01"
+tags = ["java","java_streams","collections"]
+categories = ["work"]
+menu = ""
+banner = "/banners/Java-Interview-Questions.jpg"
++++
+
+## Using Java Streams and Collectors
+This short guide covers how to use Java 8 Streams and Collectors to slice and dice lists, including computing sums, averages, and partitioning.
+
+Learn how to troubleshoot and diagnose some of the most common performance issues in Java today. Brought to you in partnership with AppDynamics.
+Java 8 provides Streams, which makes many Collection operations easy. Streaming items from a collector and filtering the data are trivial, as well as are sorting, searching, and computing aggregates. That is, if you are familiar with the many Collectors functions available. We present some of these functions here.
+
+Summing an Integer List
+Computing the sum total of numbers in a List? No longer do you need a loop, an iterator, or temporary variables. Assuming numbers contains a List of integers, the following neatly computes the result.
+
+List<Integer> numbers = ...;
+int sum = numbers.stream().reduce(0, (x, y) -> x+y);
+
+
+And the following illustrates a collection operation to collect integers from a streams pipeline into a List of integers.
+
+
+```java
+Random random = new Random();
+List<Integer> numbers = random
+    .ints(1, 100)
+    .limit(10)
+    .boxed()
+    .collect(Collectors.toList());
+    ```
+
+
+    Here is another way of computing the sum using Stream.collect() instead of Stream.reduce() as above. You can use either alternative as per your preference.
+
+```java
+int sum = numbers.stream().collect(Collectors.summingInt(x->x));
+```
+
+// prints:
+[90, 93, 61, 84, 26, 95, 61, 19, 51, 44] => sum = 624
+
+##Computing Averages
+Computing the average of a list of numbers is similarly a piece of cake. The Collectors provide an averagingInt() method for the purpose.
+
+``` java
+double avg = numbers.stream().collect(Collectors.averagingInt(x->x));
+```
+// prints:
+[90, 93, 61, 84, 26, 95, 61, 19, 51, 44] => avg = 62.4
+
+##Maximum and Minimum
+Let us also cover finding the maximum and minimum of a List of numbers while we are at it.
+
+``` java
+Optional<Integer> max = numbers.stream().collect(Collectors.maxBy(Integer::compare));
+Optional<Integer> min = numbers.stream().collect(Collectors.minBy(Integer::compare));
+```
+// prints:
+[90, 93, 61, 84, 26, 95, 61, 19, 51, 44] => max = 95
+[90, 93, 61, 84, 26, 95, 61, 19, 51, 44] => min = 19
+
+##Summarizing in One Shot
+Or why bother computing sum, average, etc. separately? Just use summarizingInt() as shown.
+``` java
+IntSummaryStatistics r = numbers.stream().collect(Collectors.summarizingInt(x -> x));
+```
+// prints:
+[21, 99, 13, 11, 14, 99, 77, 42, 32, 34] => IntSummaryStatistics{count=10, sum=442, min=11, average=44.200000, max=99}
+
+## Partitioning a List
+Let us see how to partition a List of numbers into two lists using a criterion (such as values greater than 50):
+
+```java
+Map<Boolean,List<Integer>> parts = numbers.stream().collect(Collectors.partitioningBy(x -> x > 50));
+System.out.println(numbers + " =>\n" +
+           "   true: " + parts.get(true) + "\n" +
+           "  false: " + parts.get(false) + "\n");
+```
+
+// prints;
+[77, 52, 52, 15, 81, 59, 38, 70, 55, 61] =>
+ true: [77, 52, 52, 81, 59, 70, 55, 61]
+ false: [15, 38]
+
+
+ ###Summary
+The Java 8 Collectors class provides useful implementations, which can be used by Streams' collect() method. Some of these operations presented here include computing sums, averages, maximums, and minimums. Partitioning a List based on a predicate returns a pair of Lists enclosed in a Map.
+
+Understand the needs and benefits around implementing the right monitoring solution for a growing containerized market. Brought to you in partnership with AppDynamics.
+
+Origin https://dzone.com/articles/using-java-collectors?edition=287881&utm_source=Daily%20Digest&utm_medium=email&utm_campaign=dd%202017-03-22

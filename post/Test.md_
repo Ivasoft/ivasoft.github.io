@@ -1,0 +1,207 @@
++++
+title = "Java Streams groupingBy Examples."
+description = "Java Streams grouping By Examples"
+date = "2016-01-01"
+tags = ["java","java_streams","collections"]
+categories = ["work"]
+menu = ""
+banner = "/banners/Java-Interview-Questions.jpg"
++++
+
+## Java Streams groupingBy Examples
+
+Learn how to perform SQL-like grouping and summarizing calculations on Java Collections using CSV data, POJOs, and multiple fields.
+
+Have you wanted to perform SQL-like operations on data in a List or a Map? Maybe computing a sum or average? Or perhaps performing an aggregate operation such as summing a group? Well, with Java 8 streams operations, you are covered for some of these.
+
+A previous article covered sums and averages on the whole data set. In this article, we show how to use Collectors.groupingBy() to perform SQL-like grouping on tabular data.
+
+
+Define a POJO
+Here is the POJO that we use in the examples below. It represents a baseball player.
+
+
+```java
+public class Player {
+    private int year;
+    private String teamID;
+    private String lgID;
+    private String playerID;
+    private int salary;
+}
+```
+
+We load the following sample data representing player salaries.
+
+``` text 
+yearID,teamID,lgID,playerID,salary
+1985,ATL,NL,barkele01,870000
+1985,ATL,NL,bedrost01,550000
+```
+
+Load CSV Data 
+Since the CSV is quite simple (no quoted fields, no commas inside fields, etc. See this article http://www.novixys.com/blog/howto-read-csv-file-java/ for code covering those cases), we use a simple regex-based CSV parser. The data is loaded into a list of POJOs.
+
+``` java
+Pattern pattern = Pattern.compile(",");
+try (BufferedReader in = new BufferedReader(new FileReader(filename));){
+    List<Player> players = in
+        .lines()
+        .skip(1)
+        .map(line -> {
+                String[] arr = pattern.split(line);
+                return new Player(Integer.parseInt(arr[0]),
+                                  arr[1],
+                                  arr[2],
+                                  arr[3],
+                                  Integer.parseInt(arr[4]));
+            })
+        .collect(Collectors.toList());
+}
+```
+
+Group by a Single Field
+In an illustration of a simple usage of groupingBy(), we show how to group the data by year. The result is a map of year and players list grouped by the year.
+
+``` java
+  Map<Integer,List<Player>> grouped = in
+        .lines()
+        .skip(1)
+        .map(line -> {
+                String[] arr = pattern.split(line);
+                return new Player(Integer.parseInt(arr[0]),
+                                  arr[1],
+                                  arr[2],
+                                  arr[3],
+                                  Integer.parseInt(arr[4]));
+            })
+        .collect(Collectors.groupingBy(x->x.getYear()));
+    grouped
+        .entrySet()
+        .stream()
+        .forEach(System.out::println);
+```
+1985=[{1985,ATL,NL,barkele01,870000}, {1985,ATL,NL ...
+1986=[{1986,ATL,NL,ackerji01,367500}, {1986,ATL,NL ...
+    
+By Multiple Fields
+Grouping by multiple fields is a little bit more involved because the resulting map is keyed by the list of fields selected. We create a List in the groupingBy() clause to serve as the key of the map. The value is the Player object.
+
+The output map is printed using the for-each block below.
+
+```java
+Map<List<String>,List<Player>> grouped = in
+    .lines()
+    .skip(1)
+    .map(line -> {
+            String[] arr = pattern.split(line);
+            return new Player(Integer.parseInt(arr[0]),
+                              arr[1],
+                              arr[2],
+                              arr[3],
+                              Integer.parseInt(arr[4]));
+        })
+    .collect(Collectors.groupingBy(x -> {
+                return new ArrayList<String>(Arrays.asList(Integer.toString(x.getYear()), x.getTeamID()));
+            }));
+grouped
+    .entrySet()
+    .stream()
+    .forEach(x -> {
+            System.out.println(x.getKey());
+            x.getValue().stream()
+                .forEach(p -> System.out.printf(" ( %2s %-10s %-10d )%n", p.getLgID(), p.getPlayerID(), p.getSalary()));
+        });
+[1987, PHI]
+ ( NL aguaylu01 325000 )
+ ( NL bedrost01 1050000 )
+ ( NL calhoje01 85000 )
+...
+```
+
+Eliminating the intermediate variable grouped, we have the entire processing pipeline in a single statement as shown below.
+
+``` java
+in
+    .lines()
+    .skip(1)
+    .map(line -> {
+            String[] arr = pattern.split(line);
+            return new Player(Integer.parseInt(arr[0]),
+                              arr[1],
+                              arr[2],
+                              arr[3],
+                              Integer.parseInt(arr[4]));
+        })
+    .collect(Collectors.groupingBy(x -> {
+                return new ArrayList<String>(Arrays.asList(Integer.toString(x.getYear()), x.getTeamID()));
+            }))
+    .entrySet()
+    .stream()
+    .forEach(x -> {
+            System.out.println(x.getKey());
+            x.getValue().stream()
+                .forEach(p -> System.out.printf(" ( %2s %-10s %-10d )%n", p.getLgID(), p.getPlayerID(), p.getSalary()));
+        });
+```
+
+Collecting Into a Set
+The code above collects the results into the following type:
+```
+Map<List<String>,List<Player>>
+```
+Instead of storing the values in a List (inside the Map), how can we put it into a Set? We use the groupedBy() version that accepts the value-type.
+``` java
+Map<List<String>,Set<Player>> grouped = in
+    .lines()
+    .skip(1)
+    .map(line -> {
+            String[] arr = pattern.split(line);
+            return new Player(Integer.parseInt(arr[0]),
+                              arr[1],
+                              arr[2],
+                              arr[3],
+                              Integer.parseInt(arr[4]));
+        })
+    .collect(Collectors.groupingBy(x -> return new ArrayList<String>(Arrays.asList(x.getTeamID(), x.getLgID())), Collectors.toSet()));
+    ```
+
+The first argument to groupingBy() is a lambda function which accepts a Player and returns a List of fields to group-by. The second argument is lambda which creates the Collection to place the results of the group-by.
+
+This invocation collects the values into a Set which has no ordering. To retrieve values in the same order in which they were placed into the Set, use a LinkedHashSet as shown below (only the relevant portion is shown):
+
+``` java
+... 
+.collect(Collectors.groupingBy(x -> return 
+    new ArrayList<String>(Arrays
+        .asList(x.getTeamID(), x.getLgID())), Collectors.toCollection(LinkedHashSet::new)));
+```
+
+Summarizing Field Values
+Forget about collecting the results into a List or Set or whatever. What if we want to compute an aggregate of a field value? Say, for example, the sum of all salaries paid to players grouped by team and league.  Simple! Use a summingInt() as the second argument to groupingBy(). Remember the second argument collects the value-type of the group into the map.
+
+```java
+Map<List<String>,Integer> grouped = in
+    .lines()
+    .skip(1)
+    .map(line -> {
+            String[] arr = pattern.split(line);
+            return new Player(Integer.parseInt(arr[0]),
+                              arr[1],
+                              arr[2],
+                              arr[3],
+                              Integer.parseInt(arr[4]));
+        })
+    .collect(Collectors
+        .groupingBy(x -> new ArrayList<String>(Arrays
+            .asList(x.getTeamID(), x.getLgID())), Collectors
+            .summingInt(Player::getSalary)));
+```
+
+Summary
+Summarizing using grouping by is a useful technique in data analysis. Normally these are available in SQL databases. However using the Java 8 Streams and Collections facility, it is possible to use these techniques on Java collections. Some examples included grouping and summarizing with aggregate operations.
+
+Understand the needs and benefits around implementing the right monitoring solution for a growing containerized market. Brought to you in partnership with AppDynamics.
+
+Topics: JAVA ,CSV ,JAVA COLLECTIONS ,JAVA STREAMS ,TUTORIAL
+Origin https://dzone.com/articles/java-streams-groupingby-examples?edition=286924&utm_source=Daily%20Digest&utm_medium=email&utm_campaign=dd%202017-03-25

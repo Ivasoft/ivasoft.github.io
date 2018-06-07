@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://oleiva.github.io/</loc>
+    <lastmod>2017-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/post/awesome-console-services</loc>
+    <lastmod>2017-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/post/checklist-for-a-job-offer</loc>
+    <lastmod>2017-04-02T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/post/java-interview-questions</loc>
+    <lastmod>2016-01-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/cv/</loc>
+  </url>
+  
+  <url>
+    <loc>https://oleiva.github.io/dashboard/</loc>
+  </url>
+  
+</urlset>
