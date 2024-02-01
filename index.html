@@ -1,715 +1,161 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-    <title>Oleh.Ivashko blog</title>
-    <meta name="generator" content="Hugo 0.17" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Oleh Ivashko">
-    
-      <meta name="description" content="Oleh.Ivashko blog">
-    
-    
-      <link href="https://oleiva.github.io/index.xml" rel="alternate" type="application/rss+xml" title="Oleh.Ivashko blog" />
-      <link href="https://oleiva.github.io/index.xml" rel="feed" type="application/rss+xml" title="Oleh.Ivashko blog" />
-    
-    <link rel="canonical" href="https://oleiva.github.io/"/>
-    <link rel="icon" href="https://oleiva.github.io/favicon.ico">
-    <link rel="apple-touch-icon" href="https://oleiva.github.ioapple-touch-icon.png" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список продуктов</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
 
-    <link rel="stylesheet" href="https://oleiva.github.io/static/css/style.css">
-    <link rel="stylesheet" href="https://oleiva.github.io/static/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://oleiva.github.io/static/css/monokai.css">
-    <link rel="stylesheet" href="https://oleiva.github.io/static/fancybox/jquery.fancybox.css">
+        .product-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
 
-    
-    
-    
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,400,600' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro' rel='stylesheet' type='text/css'>
-    <meta property="og:title" content="Oleh.Ivashko blog" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://oleiva.github.io/" />
+        .product-icon {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
 
+        .product-details {
+            display: flex;
+            flex-direction: column;
+        }
 
-<meta property="og:updated_time" content="2017-04-02T00:00:00&#43;00:00"/>
+        .quantity {
+            margin-top: 5px;
+        }
 
+        .calendar-container {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
 
+        #calendar {
+            margin-bottom: 10px;
+        }
 
+        #meal-type {
+            width: 150px;
+        }
 
-
-
-
-
-
-    
-    
-<meta itemprop="name" content="Oleh.Ivashko blog">
-<meta itemprop="description" content="">
-
-
-    
-    
-
-    
-
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        #submit-btn {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-<div class="container">
 
-
-<div id="container">
-    <header id="header">
-<script src="/static/js/yandex.metrics.js"></script>
-
-  <div id="header-main" class="header-inner">
-    <div class="outer">
-      <a href="https://oleiva.github.io" id="logo">
-          
-          <i class="logo" style="background-image: url('https://oleiva.github.io/static/images/logo.png')"></i>
-          
-          <span class="site-title">Oleh.Ivashko blog</span>
-      </a>
-      <nav id="main-nav">
-          
-          
-          <a class="main-nav-link" href="https://oleiva.github.io/">Home</a>
-          
-          
-          
-          <a class="main-nav-link" href="https://oleiva.github.io/about/">About</a>
-          
-          
-          
-          
-          
-          
-
-          
-
-          
-          
-          
-          
-          
-          
-          <a class="main-nav-link" href="https://oleiva.github.io/categories/">Categories</a>
-          
-          
-          
-          <a class="main-nav-link" href="https://oleiva.github.io/tags/">Tags</a>
-          
-          
-      </nav>
-        <nav id="sub-nav">
-          <div class="profile" id="profile-nav">
-            <a id="profile-anchor" href="javascript:;"><img class="avatar" src="https://oleiva.github.io/static/images/avatar.png"><i class="fa fa-caret-down"></i></a>
-          </div>
-        </nav>
-        <div id="search-form-wrap">
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-              <input type="search" name="q" class="search-form-input" placeholder="Search">
-              <button type="submit" class="search-form-submit">
-              </button>
-              <input type="hidden" name="q" value="site:https://oleiva.github.io">
-         </form>
+    <div class="product-container">
+        <img src="product-icon.png" alt="Product Icon" class="product-icon">
+        <div class="product-details">
+            <span>Хлеб</span>
+            <div class="quantity">
+                <button onclick="changeQuantity('bread', 'increase')">+</button>
+                <span id="bread-quantity">0</span> грамм
+                <button onclick="changeQuantity('bread', 'decrease')">-</button>
+            </div>
         </div>
     </div>
-  </div>
-  <div id="main-nav-mobile" class="header-sub header-inner">
-    <table class="menu outer">
-      <tbody>
-          <tr>
-          
-          
-          <td><a class="main-nav-link" href="https://oleiva.github.io/">Home</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="https://oleiva.github.io/about/">About</a></td>
-          
-          
-          
-          
-          
-          
 
-          
-
-          
-          
-          
-          
-          
-          
-          <td><a class="main-nav-link" href="https://oleiva.github.io/categories/">Categories</a></td>
-          
-          
-          
-          <td><a class="main-nav-link" href="https://oleiva.github.io/tags/">Tags</a></td>
-          
-          
-          <td>
-          <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form">
-          <input type="search" name="q" class="search-form-input" placeholder="Search">
-          <input type="hidden" name="q" value="site:https://oleiva.github.io">
-          </form>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</header>
-
-
-    <div class="outer">
-    <aside id="profile">
-  <div class="inner profile-inner">
-    <div class="base-info profile-block">
-      <a href="/cv">
-      <img id="avatar" src="https://oleiva.github.io/static/images/avatar.png" >
-    </a>
-
-
-    </div>
-    <div class="article-info profile-block">
-      <div class="article-info-block">
-        3
-        <span>Posts</span>
-      </div>
-      <div class="article-info-block">
-        
-          5
-        
-        <span>
-            Tags
-        </span>
-      </div>
-    </div>
-
-  </div>
-</aside>
-
-    <section id="main">
-    
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="https://oleiva.github.io/post/awesome-console-services" itemprop="url">
-                <img src="https://oleiva.github.io/banners/awesome-console-services.png" class="article-banner">
-            
-            </a>
-
-            <header class="article-header">
-    <a href="https://oleiva.github.io/post/awesome-console-services">
-    <h1 class="article-title" itemprop="name">
-        Awesome-console-services
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">04/02/2017</time>
-            &middot;
-            157
-            words
-            &middot;
-            1
-            minute read
-        </div>      
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iocategories/work">work</a>
-                
-                
+    <div class="product-container">
+        <img src="product-icon.png" alt="Product Icon" class="product-icon">
+        <div class="product-details">
+            <span>Колбаса</span>
+            <div class="quantity">
+                <button onclick="changeQuantity('sausage', 'increase')">+</button>
+                <span id="sausage-quantity">0</span> грамм
+                <button onclick="changeQuantity('sausage', 'decrease')">-</button>
             </div>
-            
-        
-       
-    </div>
-</header>
-
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    A curated list of awesome console services (reachable via HTTP, HTTPS and other network protocols).
-IP address  curl canihazip.com/s curl ipinfo.io/ip curl icanhazip.com curl curlmyip.net curl ipecho.net/plain curl ifcfg.me curl ip-addr.es dig +short myip.opendns.com @resolver1.opendns.com  IP-based geolocation  curl ipinfo.io/8.8.8.8 or curl ipinfo.io/8.8.8.8/loc curl freegeoip.net/csv/8.8.8.8 or freegeoip.net/xml/4.2.2.2 or freegeoip.net/json/github.com  Text Sharing (like pastebin)  ix.io sprunge.us ptpb.pw  URL shortener  curl -s <a href="http://tinyurl.com/api-create.php?url=http://www.google.com">http://tinyurl.com/api-create.php?url=http://www.google.com</a>  File Transfer  curl &ndash;upload-file &lt;file&gt; transfer.
-                    <br>
-                </p>
-                <div>
-                
-
-
-
-
-                </div>
-                <p class="article-more-link">
-                    <a href="https://oleiva.github.io/post/awesome-console-services">
-                        Read more
-                    </a>
-                </p>
-            </div>
-            <footer class="article-footer">
-    <a data-url="https://oleiva.github.io/post/awesome-console-services" data-id="8d190620542736a409f369af22e4536c" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://oleiva.github.io/post/awesome-console-services/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-            
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/job">job</a>
-                &middot;
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/checklist">checklist</a>
-                
-                
-            </div>
-            
-        
-
-<script type="text/javascript" src="/static/js/disqus.connection.js"></script>
-</footer>
-
         </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="https://oleiva.github.io/post/checklist-for-a-job-offer" itemprop="url">
-                <img src="https://oleiva.github.io/banners/Checklist-for-a-job%20offer.png" class="article-banner">
-            
-            </a>
-
-            <header class="article-header">
-    <a href="https://oleiva.github.io/post/checklist-for-a-job-offer">
-    <h1 class="article-title" itemprop="name">
-        Чек-лист предложений о работе
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2017-04-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">04/02/2017</time>
-            &middot;
-            1316
-            words
-            &middot;
-            7
-            minute read
-        </div>      
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iocategories/work">work</a>
-                
-                
-            </div>
-            
-        
-       
     </div>
-</header>
 
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    <ol>
-<li>Рабочий график и можно ли его двигать. Я люблю поспать. Но на моей прошлой работе «рабочее утро» начиналось в 7:30. Мало того, что я довольно часто не мог прийти к этому времени, я еще пол дня занимался тем, что пытался привести себя в рабочую форму. Где то до 10:00. С 10:30 до 11:30 я усердно работал. Потом был обед. А потом мне хотелось спать, а не работать, т.к. я не высыпался еще с утра.</li>
-</ol>
-
-                    <br>
-                </p>
-                <div>
-                
-
-
-
-
-                </div>
-                <p class="article-more-link">
-                    <a href="https://oleiva.github.io/post/checklist-for-a-job-offer">
-                        Read more
-                    </a>
-                </p>
+    <div class="product-container">
+        <img src="product-icon.png" alt="Product Icon" class="product-icon">
+        <div class="product-details">
+            <span>Молоко</span>
+            <div class="quantity">
+                <button onclick="changeQuantity('milk', 'increase')">+</button>
+                <span id="milk-quantity">0</span> грамм
+                <button onclick="changeQuantity('milk', 'decrease')">-</button>
             </div>
-            <footer class="article-footer">
-    <a data-url="https://oleiva.github.io/post/checklist-for-a-job-offer" data-id="57b0f166079f3eb384a4c3cbd6b31cb4" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://oleiva.github.io/post/checklist-for-a-job-offer/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-            
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/job">job</a>
-                &middot;
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/checklist">checklist</a>
-                
-                
-            </div>
-            
-        
-
-<script type="text/javascript" src="/static/js/disqus.connection.js"></script>
-</footer>
-
         </div>
-    </article>
-    
-    <article class="article article-type-post" itemscope="" itemprop="blogPost">
-        <div class="article-inner">
-            
-            <a href="https://oleiva.github.io/post/java-interview-questions" itemprop="url">
-                <img src="https://oleiva.github.io/banners/Java-Interview-Questions.jpg" class="article-banner">
-            
-            </a>
-
-            <header class="article-header">
-    <a href="https://oleiva.github.io/post/java-interview-questions">
-    <h1 class="article-title" itemprop="name">
-        Java Interview Questions.
-    </h1>
-    </a>
-    <div class="article-meta">
-        <div class="article-date">
-            <i class="fa fa-calendar"></i>
-            <time datetime="2016-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">01/01/2016</time>
-            &middot;
-            1396
-            words
-            &middot;
-            7
-            minute read
-        </div>      
-        
-            
-            
-            <div class="article-category">
-                <i class="fa fa-folder"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iocategories/work">work</a>
-                
-                
-            </div>
-            
-        
-       
     </div>
-</header>
 
-            <div class="article-entry" itemprop="articleBody">
-                <p>
-                    I have written a lot of posts for java interview questions, this is a placeholder for all those posts. You can bookmark this post and come again in future to see the new additions.
-1. Core Java Interview Questions and Answers Core Java is the starting point of any Java interview. Whether you are fresher or experienced in java, having a strong grip on Core Java is very important to clear the interview.
-                    <br>
-                </p>
-                <div>
-                
-
-
-
-
-                </div>
-                <p class="article-more-link">
-                    <a href="https://oleiva.github.io/post/java-interview-questions">
-                        Read more
-                    </a>
-                </p>
+    <div class="product-container">
+        <img src="product-icon.png" alt="Product Icon" class="product-icon">
+        <div class="product-details">
+            <span>Яйца</span>
+            <div class="quantity">
+                <button onclick="changeQuantity('eggs', 'increase')">+</button>
+                <span id="eggs-quantity">0</span> грамм
+                <button onclick="changeQuantity('eggs', 'decrease')">-</button>
             </div>
-            <footer class="article-footer">
-    <a data-url="https://oleiva.github.io/post/java-interview-questions" data-id="8d38ccb003819dd04ac1cab6e32e1e0a" class="article-share-link">
-        <i class="fa fa-share"></i>
-        Share
-    </a>
-    
-    <a href="https://oleiva.github.io/post/java-interview-questions/#disqus_thread" class="article-comment-link">
-        Comments
-    </a>
-    
-            
-            
-            
-            <div class="article-category">
-                <i class="fa fa-tags"></i>
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/java">java</a>
-                &middot;
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/scala">scala</a>
-                &middot;
-                
-                <a class="article-category-link" href="https://oleiva.github.iotags/interview">interview</a>
-                
-                
-            </div>
-            
-        
-
-<script type="text/javascript" src="/static/js/disqus.connection.js"></script>
-</footer>
-
         </div>
-    </article>
-    
-
-    <nav id="page-nav">
-
-</nav>
-
-</section>
-
-
-    <aside id="sidebar">
-    
-<div class="widget-wrap">
-    <h3 class="widget-title">
-        Recents
-    </h3>
-    <div class="widget">
-        <ul id="recent-post">
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://oleiva.github.io/post/awesome-console-services" class="thumbnail">
-                    
-                        <span style="background-image:url(https://oleiva.github.io/banners/awesome-console-services.png)" alt="Oleh.Ivashko blog" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        <a class="article-category-link" href="https://oleiva.github.iocategories/work">
-                        work
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://oleiva.github.io/post/awesome-console-services" class="title">Awesome-console-services</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">04/02/2017</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://oleiva.github.io/post/checklist-for-a-job-offer" class="thumbnail">
-                    
-                        <span style="background-image:url(https://oleiva.github.io/banners/Checklist-for-a-job%20offer.png)" alt="Oleh.Ivashko blog" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        <a class="article-category-link" href="https://oleiva.github.iocategories/work">
-                        work
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://oleiva.github.io/post/checklist-for-a-job-offer" class="title">Чек-лист предложений о работе</a></p>
-                    <p class="item-date">
-                        <time datetime="2017-04-02 00:00:00 &#43;0000 UTC" itemprop="datePublished">04/02/2017</time>
-                    </p>
-                </div>
-            </li>
-            
-            <li>
-                <div class="item-thumbnail">
-                    <a href="https://oleiva.github.io/post/java-interview-questions" class="thumbnail">
-                    
-                        <span style="background-image:url(https://oleiva.github.io/banners/Java-Interview-Questions.jpg)" alt="Oleh.Ivashko blog" class="thumbnail-image"></span>
-                    
-                    </a>
-                </div>
-                <div class="item-inner">
-                    
-                    
-                    <p class="item-category">
-                        <a class="article-category-link" href="https://oleiva.github.iocategories/work">
-                        work
-                        </a>
-                    </p>
-                    
-                    
-                    <p class="item-title"><a href="https://oleiva.github.io/post/java-interview-questions" class="title">Java Interview Questions.</a></p>
-                    <p class="item-date">
-                        <time datetime="2016-01-01 00:00:00 &#43;0000 UTC" itemprop="datePublished">01/01/2016</time>
-                    </p>
-                </div>
-            </li>
-            
-        </ul>
     </div>
-</div>
 
-
-    
-
-
-<div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-        <ul class="category-list">
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iocategories/work">
-                    work
-                </a>
-                <span class="category-list-count">3</span>
-            </li>
-            
-        </ul>
+    <div class="calendar-container">
+        <div>
+            <label for="calendar">Дата:</label>
+            <input type="date" id="calendar">
+        </div>
+        <div>
+            <label for="meal-type">Тип приема пищи:</label>
+            <select id="meal-type">
+                <option value="breakfast">Завтрак</option>
+                <option value="lunch">Обед</option>
+                <option value="dinner">Ужин</option>
+            </select>
+        </div>
     </div>
-</div>
 
+    <button id="submit-btn" onclick="submitList()">Отправить</button>
 
-
-    
-
-
-<div class="widget-wrap">
-    <h3 class="widget-title">
-        Tags
-    </h3>
-    <div class="widget">
-        <ul class="category-list">
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iotags/checklist">
-                    checklist
-                </a>
-                <span class="category-list-count">2</span>
-            </li>
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iotags/interview">
-                    interview
-                </a>
-                <span class="category-list-count">1</span>
-            </li>
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iotags/java">
-                    java
-                </a>
-                <span class="category-list-count">1</span>
-            </li>
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iotags/job">
-                    job
-                </a>
-                <span class="category-list-count">2</span>
-            </li>
-            
-            <li class="category-list-item">
-                <a class="category-list-link" href="https://oleiva.github.iotags/scala">
-                    scala
-                </a>
-                <span class="category-list-count">1</span>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-
-
-
-    
-
-
-<div class="widget-wrap">
-    <h3 class="widget-title">
-        Tag cloud
-    </h3>
-    <div class="widget tagcloud">
-        
-        <a href="https://oleiva.github.iotags/checklist" style="font-size: 12px;">checklist</a>
-        
-        <a href="https://oleiva.github.iotags/interview" style="font-size: 12px;">interview</a>
-        
-        <a href="https://oleiva.github.iotags/java" style="font-size: 12px;">java</a>
-        
-        <a href="https://oleiva.github.iotags/job" style="font-size: 12px;">job</a>
-        
-        <a href="https://oleiva.github.iotags/scala" style="font-size: 12px;">scala</a>
-        
-    </div>
-</div>
-
-
-
-
-    <div id="toTop" class="fa fa-angle-up"></div>
-</aside>
-
-    </div>
-</div>
-
-<footer id="footer">
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018
-      Powered by <a href="https://oleiva.github.io">Oleh Ivashko</a>
-    </div>
-  </div>
-</footer>
-
+  <!-- ... (ваш HTML-код остается тем же) -->
 
 <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    const quantities = {
+        bread: 0,
+        sausage: 0,
+        milk: 0,
+        eggs: 0
+    };
 
-ga('create', 'UA-85686153-4', 'auto');
-ga('send', 'pageview');
+    function changeQuantity(product, action) {
+        if (action === 'increase') {
+            quantities[product]++;
+        } else if (action === 'decrease' && quantities[product] > 0) {
+            quantities[product]--;
+        }
+
+        document.getElementById(`${product}-quantity`).innerText = quantities[product];
+    }
+
+    function submitList() {
+        const productList = {
+            bread: quantities.bread,
+            sausage: quantities.sausage,
+            milk: quantities.milk,
+            eggs: quantities.eggs,
+            date: document.getElementById('calendar').value,
+            mealType: document.getElementById('meal-type').value
+        };
+
+        console.log("Список продуктов:", productList);
+    }
 </script>
-
-<script src="https://oleiva.github.io/static/fancybox/jquery.fancybox.pack.js"></script>
-<script src="https://oleiva.github.io/static/js/script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<!-- MathJax -->
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {
-    inlineMath: [['$','$'], ['\\(','\\)']]}
-  });
-</script>
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
 </body>
