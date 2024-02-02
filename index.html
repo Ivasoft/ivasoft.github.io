@@ -3,157 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список продуктов</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        .product-container {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-
-        .product-icon {
-            width: 60px;
-            height: 60px;
-            margin-right: 10px;
-        }
-
-        .product-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .quantity {
-            margin-top: 5px;
-        }
-
-        .calendar-container {
-            margin-top: 20px;
-            border-top: 1px solid #ccc;
-            padding-top: 20px;
-        }
-
-        #calendar {
-            margin-bottom: 10px;
-        }
-
-        #meal-type {
-            width: 150px;
-        }
-
-        #submit-btn {
-            margin-top: 10px;
-            padding: 10px;
-            background-color: #4caf50;
-            color: #fff;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-        }
-    </style>
+    <title>Product List</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    .product-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .product-icon {
+        width: 60px;
+        height: 60px;
+        margin-right: 10px;
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .quantity {
+        margin-top: 5px;
+    }
+
+    .calendar-container {
+        margin-top: 20px;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+    }
+
+    #calendar {
+        margin-bottom: 10px;
+    }
+
+    #meal-type {
+        width: 150px;
+    }
+
+    #submit-btn {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+    }
+</style>
 <body>
+<div>
+    <details>
+        <summary>Хлеб</summary>
 
-    <div class="product-container">
-        <img src="product-icon.png" alt="Product Icon" class="product-icon">
-        <div class="product-details">
-            <span>Хлеб</span>
-            <div class="quantity">
-                <button onclick="changeQuantity('bread', 'increase')">+</button>
-                <span id="bread-quantity">0</span> грамм
-                <button onclick="changeQuantity('bread', 'decrease')">-</button>
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#1">Хлеб</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;хлеб&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="хлеб-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;хлеб&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="product-container">
-        <img src="product-icon.png" alt="Product Icon" class="product-icon">
-        <div class="product-details">
-            <span>Колбаса</span>
-            <div class="quantity">
-                <button onclick="changeQuantity('sausage', 'increase')">+</button>
-                <span id="sausage-quantity">0</span> грамм
-                <button onclick="changeQuantity('sausage', 'decrease')">-</button>
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#2">Булка</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;булка&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="булка-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;булка&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="product-container">
-        <img src="product-icon.png" alt="Product Icon" class="product-icon">
-        <div class="product-details">
-            <span>Молоко</span>
-            <div class="quantity">
-                <button onclick="changeQuantity('milk', 'increase')">+</button>
-                <span id="milk-quantity">0</span> грамм
-                <button onclick="changeQuantity('milk', 'decrease')">-</button>
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#3">Батон</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;батон&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="батон-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;батон&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="product-container">
-        <img src="product-icon.png" alt="Product Icon" class="product-icon">
-        <div class="product-details">
-            <span>Яйца</span>
-            <div class="quantity">
-                <button onclick="changeQuantity('eggs', 'increase')">+</button>
-                <span id="eggs-quantity">0</span> грамм
-                <button onclick="changeQuantity('eggs', 'decrease')">-</button>
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#4">Батат</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;батат&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="батат-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;батат&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
             </div>
+
+
         </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#5">Брауни</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;брауни&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="брауни-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;брауни&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#6">Печенье</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;печенье&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="печенье-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;печенье&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </details>
+</div>
+<div>
+    <details>
+        <summary>Вода</summary>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#7">Газировка</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;газировка&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="газировка-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;газировка&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#8">Кока-кола</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;кока-кола&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="кока-кола-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;кока-кола&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="product-container">
+
+
+            <img src="/images/product-icon.png" alt="Product Icon" class="product-icon">
+
+            <div class="product-details" id="${product.id}">
+                <!--                <span th:text="${product.name}"></span>-->
+                <span id="#9">Пепси</span>
+                <div class="quantity">
+                    <button onclick="changeQuantity(&#39;пепси&#39;, &#39;increase&#39;)">
+                        +
+                    </button>
+                    <span id="пепси-quantity">0</span> грамм
+                    <button onclick="changeQuantity(&#39;пепси&#39;, &#39;decrease&#39;)">
+                        -
+                    </button>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </details>
+</div>
+
+<div class="calendar-container">
+    <div>
+        <label for="calendar">Дата:</label>
+        <input type="date" id="calendar">
     </div>
-
-    <div class="calendar-container">
-        <div>
-            <label for="calendar">Дата:</label>
-            <input type="date" id="calendar">
-        </div>
-        <div>
-            <label for="meal-type">Тип приема пищи:</label>
-            <select id="meal-type">
-                <option value="breakfast">Завтрак</option>
-                <option value="lunch">Обед</option>
-                <option value="dinner">Ужин</option>
-            </select>
-        </div>
+    <div>
+        <label for="meal-type">Тип приема пищи:</label>
+        <select id="meal-type">
+            <option value="breakfast">Завтрак</option>
+            <option value="lunch">Обед</option>
+            <option value="dinner">Ужин</option>
+        </select>
     </div>
+</div>
 
-    <button id="submit-btn" onclick="submitList()">Отправить</button>
+<button id="submit-btn" onclick="submitList()">Отправить</button>
 
-  <!-- ... (ваш HTML-код остается тем же) -->
 
 <script>
-    const quantities = {
-        bread: 0,
-        sausage: 0,
-        milk: 0,
-        eggs: 0
-    };
+    const quantities = {};
+    const shippingMap = new Map();
+    var productCount;
+
 
     function changeQuantity(product, action) {
+        if (!quantities[product]) quantities[product] = 0;
         if (action === 'increase') {
             quantities[product]++;
+
+            if (shippingMap.get(product) != null) {
+                productCount = shippingMap.get(product);
+                productCount++;
+                shippingMap.set(product, productCount)
+            } else {
+                shippingMap.set(product, 1);
+            }
+
         } else if (action === 'decrease' && quantities[product] > 0) {
             quantities[product]--;
-        }
 
-        document.getElementById(`${product}-quantity`).innerText = quantities[product];
+            if (shippingMap.get(product) != null) {
+                productCount = shippingMap.get(product);
+                productCount--;
+                shippingMap.set(product, productCount)
+            } else {
+                shippingMap.set(product, 0);
+            }
+        }
+        console.log(JSON.stringify(Object.fromEntries(Array.from(shippingMap))));
+        document.getElementById(product.toLowerCase() + '-quantity').innerText = quantities[product];
     }
 
     function submitList() {
-        const productList = {
-            bread: quantities.bread,
-            sausage: quantities.sausage,
-            milk: quantities.milk,
-            eggs: quantities.eggs,
-            date: document.getElementById('calendar').value,
-            mealType: document.getElementById('meal-type').value
-        };
-
-        console.log("Список продуктов:", productList);
+        const productList = {};
+        /*<![CDATA[*/
+        
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u0445\u043B\u0435\u0431"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u0431\u0443\u043B\u043A\u0430"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u0431\u0430\u0442\u043E\u043D"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u0431\u0430\u0442\u0430\u0442"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u0431\u0440\u0430\u0443\u043D\u0438"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0445\u043B\u0435\u0431"_"\u043F\u0435\u0447\u0435\u043D\u044C\u0435"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0432\u043E\u0434\u0430"_"\u0433\u0430\u0437\u0438\u0440\u043E\u0432\u043A\u0430"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0432\u043E\u0434\u0430"_"\u043A\u043E\u043A\u0430-\u043A\u043E\u043B\u0430"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        var mapArray = Array.from(shippingMap);
+        // productList['"\u0432\u043E\u0434\u0430"_"\u043F\u0435\u043F\u0441\u0438"'] = JSON.stringify(Object.fromEntries(mapArray));
+        
+        
+        /*]]>*/
+        const date = document.getElementById('calendar').value;
+        const mealType = document.getElementById('meal-type').value;
+        console.log('Список продуктов:',  JSON.stringify(Object.fromEntries(mapArray)));
+        console.log('Дата:', date);
+        console.log('Тип приема пищи:', mealType);
     }
 </script>
 
